@@ -1,0 +1,197 @@
+<app-tutor-nav></app-tutor-nav>
+<div class="main p-2">
+  <div class="container">
+    <mat-card>
+      <h1 class="course-head"><span>Add Your Course</span></h1>
+      <mat-vertical-stepper [linear]="invalid" #stepper>
+        <mat-step [stepControl]="firstFormGroup">
+          <form [formGroup]="firstFormGroup">
+            <ng-template matStepLabel>Fill out your cour</ng-template>
+            <div class="d-flex flex-column p-3">
+              <mat-form-field appearance="outline">
+                <mat-label>Course Name</mat-label>
+                <input type="text" matInput formControlName="courseName" />
+                <mat-error
+                  *ngIf="firstFormGroup.get('courseName')?.hasError('required')"
+                  >Course Name is required</mat-error
+                >
+              </mat-form-field>
+
+              <!------------course trailor----------------->
+
+              <div class="p-3">
+                <h2>Trailor video</h2>
+
+                <input
+                  type="file"
+                  class="file-input"
+                  (change)="onChangeTrailor($event)"
+                  #fileUpload
+                  accept="video/*"
+                />
+
+                <div *ngIf="trailorFile">
+                  <section class="file-info">
+                    File details:
+                    <ul>
+                      <li>Name: {{ trailorFile.name }}</li>
+                      <li>Type: {{ trailorFile.type }}</li>
+                      <li>Size: {{ trailorFile.size }} bytes</li>
+                    </ul>
+                  </section>
+                  <video controls *ngIf="trailorvideoUrl" class="w-100 h-50">
+                    <source [src]="trailorvideoUrl" type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                  <!-- <button (click)="onUpload()" type="button">
+                  Upload the file
+                </button> -->
+
+                  <section [ngSwitch]="status">
+                    <p *ngSwitchCase="'uploading'">⏳ Uploading...</p>
+                    <p *ngSwitchCase="'success'">✅ Done!</p>
+                    <p *ngSwitchCase="'fail'">❌ Error!</p>
+                    <p *ngSwitchDefault>😶 Waiting to upload...</p>
+                  </section>
+                </div>
+              </div>
+              <div class="p-3">
+                <h2>Course video</h2>
+
+                <input
+                  type="file"
+                  class="file-input"
+                  (change)="onChange($event)"
+                  #fileUpload
+                  accept="video/*"
+                />
+
+                <div *ngIf="file">
+                  <section class="file-info">
+                    File details:
+                    <ul>
+                      <li>Name: {{ file.name }}</li>
+                      <li>Type: {{ file.type }}</li>
+                      <li>Size: {{ file.size }} bytes</li>
+                    </ul>
+                  </section>
+                  <video controls *ngIf="videoUrl" class="w-100 h-50">
+                    <source [src]="videoUrl" type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                  <!-- <button (click)="onUpload()" type="button">
+                    Upload the file
+                  </button> -->
+
+                  <section [ngSwitch]="status">
+                    <p *ngSwitchCase="'uploading'">⏳ Uploading...</p>
+                    <p *ngSwitchCase="'success'">✅ Done!</p>
+                    <p *ngSwitchCase="'fail'">❌ Error!</p>
+                    <p *ngSwitchDefault>😶 Waiting to upload...</p>
+                  </section>
+                </div>
+              </div>
+              <mat-form-field appearance="outline">
+                <mat-label>Course Video Description</mat-label>
+                <input
+                  type="text"
+                  matInput
+                  formControlName="courseVideoDescription"
+                />
+                <mat-error
+                  *ngIf="
+                    firstFormGroup
+                      .get('courseVideoDescription')
+                      ?.hasError('required')
+                  "
+                >
+                  Course video Description is required</mat-error
+                >
+              </mat-form-field>
+            </div>
+
+            <div>
+              <button mat-button matStepperNext>Next</button>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step [stepControl]="secondFormGroup">
+          <form [formGroup]="secondFormGroup" class="p-2">
+            <ng-template matStepLabel
+              >Fill out your remaining details</ng-template
+            >
+            <div class="d-flex flex-column">
+              <mat-form-field appearance="outline">
+                <mat-label>Course Video Duration</mat-label>
+                <input
+                  type="text"
+                  matInput
+                  formControlName="courseVideoDuration"
+                />
+                <mat-error
+                  *ngIf="
+                    secondFormGroup
+                      .get('courseVideoDuration')
+                      ?.hasError('required')
+                  "
+                  >Course video Duration is required</mat-error
+                >
+              </mat-form-field>
+              <div class="p-3">
+                <!-------course image----->
+                <input
+                  type="file"
+                  class="file-input"
+                  (change)="onImageChange($event)"
+                  accept="image/*"
+                />
+                <div *ngIf="imageUrl" class="d-flex justify-content-center">
+                  <img [src]="imageUrl" width="200px" height="200px" />
+                </div>
+              </div>
+              <mat-form-field appearance="outline">
+                <mat-label>Course Fee</mat-label>
+                <input type="text" matInput formControlName="courseFee" />
+                <mat-error
+                  *ngIf="secondFormGroup.get('courseFee')?.hasError('required')"
+                  >Course Fee required</mat-error
+                >
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Course Description</mat-label>
+                <input
+                  type="text"
+                  matInput
+                  formControlName="courseDescription"
+                />
+                <mat-error
+                  *ngIf="
+                    secondFormGroup
+                      .get('courseDescription')
+                      ?.hasError('required')
+                  "
+                >
+                  Course description is required</mat-error
+                >
+              </mat-form-field>
+            </div>
+            <div>
+              <button mat-button matStepperPrevious>Back</button>
+              <button mat-button matStepperNext>Next</button>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step>
+          <ng-template matStepLabel>Done</ng-template>
+          You are now done.
+          <div>
+            <button mat-button matStepperPrevious (click)="stepper.reset()">
+              Back
+            </button>
+            <button mat-button (click)="submitCourse()">Submit</button>
+          </div>
+        </mat-step>
+      </mat-vertical-stepper>
+    </mat-card>
+  </div>
+</div>

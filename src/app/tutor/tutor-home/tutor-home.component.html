@@ -1,0 +1,68 @@
+<app-tutor-nav> </app-tutor-nav
+><!-- Content specific to the tutor component goes here -->
+<!-- For example: -->
+<div>
+  <div class="tutor-button">
+    <button
+      mat-raised-button
+      color="warn"
+      value=""
+      routerLink="/tutor/addCourse"
+    >
+      Add Course
+    </button>
+  </div>
+  <!-----------------------search--------------------->
+<div class="search-container">
+  <mat-form-field appearance="outline" class="custom-search-field fs-5">
+    <input matInput placeholder="Search your course here"[(ngModel)]="searchTerm" class="long-search-bar">
+    <button matSuffix mat-icon-button aria-label="Search">
+      <mat-icon>search</mat-icon>
+    </button>
+  </mat-form-field>
+</div>
+
+
+  
+  <!--------------Tutor section-->
+
+  <div class="section">
+    <h1 class="section-heading">
+      <span>WebLearn Courses</span>
+    </h1>
+    <div class="card-container" >
+      <mat-card
+        class="card"
+        *ngFor="let course of  getCurrentTutorCourses()"
+        [routerLink]="['/tutor/single-page', course._id]"
+      >
+        <div
+          class="card-image"
+          [style.backgroundImage]="
+            'url(' + getImage(course.image ? course.image : '') + ')'
+          "
+          [style.background-size]="'cover'"
+        ></div>
+        <div class="details">
+          <h2>{{ course.courseName }}</h2>
+          <p>Tutor Name: {{ course.tutorId.name }}</p>
+          <p>Course Fee: ${{ course.courseFee }}</p>
+          <p>{{ courseFee }}</p>
+        </div>
+        </mat-card>
+    </div>
+    <div  *ngIf="getCurrentTutorCourses().length===0">
+      <h1 class="text-center">No any cources</h1>
+    </div>
+    <mat-paginator *ngIf="getCurrentTutorCourses().length!==0"
+    [length]="totalTutorCourses"
+    [pageSize]="pageSize"
+    [pageIndex]="currentPage"
+    (page)="onPageChange($event)"
+    class="custom-paginator"
+    ></mat-paginator>
+  </div>
+  <!-- Other content related to tutor dashboard -->
+</div>
+
+

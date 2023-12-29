@@ -1,0 +1,40 @@
+<div *ngIf="!editMode" class="bg-success h-100 w-100">
+  <div mat-dialog-content class="d-flex flex-column align-items-center">
+    <form (ngSubmit)="Saveuser()" [formGroup]="form">
+      <div class="p-3">
+        <!-------course image----->
+        <input
+          type="file"
+          class="file-input"
+          (change)="onImageChange($event)"
+          accept="image/*"
+        />
+        <div *ngIf="imageUrl" class="d-flex justify-content-center">
+          <img [src]="imageUrl" width="200px" height="200px" />
+        </div>
+      </div>
+      <mat-form-field appearance="fill" class="w-100 mb-3">
+        <input matInput placeholder="Name" formControlName="name" />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="w-100 mb-3">
+        <input matInput placeholder="Education" formControlName="education" />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="w-100 mb-3">
+        <input matInput placeholder="Email" formControlName="email" readonly />
+      </mat-form-field>
+
+      <!-- Add profile picture upload field if needed -->
+
+      <div mat-dialog-actions class="d-flex justify-content-end">
+        <button mat-raised-button color="warn" (click)="closeDialog()">
+          Cancel
+        </button>
+        <button mat-raised-button color="primary" (click)="Saveuser()">
+          Save
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

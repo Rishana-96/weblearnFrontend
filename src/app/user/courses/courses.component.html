@@ -1,0 +1,49 @@
+<app-user-nav></app-user-nav>
+<!-----------------------search--------------------->
+<div class="search-container">
+  <mat-form-field appearance="outline" class="custom-search-field">
+    <input matInput placeholder="Search your course here"[(ngModel)]="searchTerm" class="long-search-bar">
+    <button matSuffix mat-icon-button aria-label="Search">
+      <mat-icon>search</mat-icon>
+    </button>
+  </mat-form-field>
+</div>
+<!---------------select particular course-------------->
+<div class="d-flex justify-content-end me-5">
+<mat-form-field>
+  <mat-label>Course</mat-label>
+  <mat-select [(ngModel)]="selectedValue" name="course" (selectionChange)="onCourseSelected()">
+  <mat-option *ngFor="let cat of category"[value]="cat.value">{{cat.viewValue}}</mat-option>
+  </mat-select>
+</mat-form-field>
+</div>  
+
+<!--------------course section-->
+<div class="section">
+    <h1 class="section-heading">
+      <span>Our Courses</span>
+    </h1>
+    <div class="card-container">
+      <mat-card class="card" *ngFor="let course of getCurrentPageCourses()" [routerLink]="['/single-page',course._id]">
+        <div
+          class="card-image"
+          [style.backgroundImage]="'url(' + getImage(course.image ? course.image:'')+ ')'"
+          [style.background-size]="'cover'"
+        ></div>
+        <div class="details">
+          <h2>{{ course.courseName }}</h2>
+          <p>Tutor Name: {{ course.tutorId.name }}</p>
+          <p>Course Fee: ${{ course.courseFee }}</p>
+          
+        </div>
+      </mat-card>
+    </div>
+    <mat-paginator
+    [length]="totalCourses"
+    [pageSize]="pageSize"
+    [pageIndex]="currentPage"
+    (page)="onPageChange($event)"
+    class="custom-paginator"
+    ></mat-paginator>
+  </div>
+

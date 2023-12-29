@@ -1,0 +1,60 @@
+/* Modal Content */
+.bg-success {
+  background-color: #ffffff;
+  color: #333;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  max-width: 100%;
+}
+
+/* Input Fields */
+.mat-form-field {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+/* Input Text Color */
+.mat-input-element {
+  color: #333;
+}
+
+/* Buttons */
+.mat-raised-button {
+  margin-left: 10px;
+}
+
+/* Cancel Button */
+.mat-raised-button[color="warn"] {
+  background-color: #e74c3c;
+  color: #fff;
+}
+
+/* Primary Button */
+.mat-raised-button[color="primary"] {
+  background-color: #3498db;
+  color: #fff;
+}
+
+/* Button Hover Effect */
+.mat-raised-button:hover {
+  opacity: 0.8;
+}
+
+/* Close Button */
+.mat-dialog-title + button {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  color: #333;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 24px;
+}
+
+/* Modal Overlay */
+.cdk-overlay-backdrop {
+  background-color: rgba(0, 0, 0, 0.5);
+}

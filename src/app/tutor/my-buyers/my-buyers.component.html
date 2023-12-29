@@ -1,0 +1,27 @@
+<app-tutor-nav></app-tutor-nav>
+<div class="section">
+    <h1 class="section-heading">
+      <span>My  Buyers</span>
+    </h1>
+    <div class="card-container">
+      <mat-card class="card" *ngFor="let user of users">
+        <div
+          class="card-image" *ngIf="!showImage"
+          [style.backgroundImage]="'url(' + getImage(user.userId.image)+ ')'"
+          [style.background-size]="'cover'"
+        >
+    </div>
+    <div
+    class="card-image" *ngIf="showImage"
+    [style.backgroundImage]="'url(' + tempImage+ ')'"
+    [style.background-size]="'cover'"
+  >
+</div>
+<div class="details">
+    <h2>{{ user.userId.name }}</h2>
+    <p class="education">{{ user.userId.education }}</p>
+    <p class="email">{{ user.userId.email }}</p>
+  </div>
+      </mat-card>
+    </div>
+  </div>

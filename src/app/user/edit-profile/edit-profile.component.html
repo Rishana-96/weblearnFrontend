@@ -1,0 +1,67 @@
+<div class="h-100 w-100">
+  <div mat-dialog-content class="d-flex flex-column align-items-center">
+  <form [formGroup]="editForm" (ngSubmit)="saveUser()">
+  
+      <div class="p-3">
+       
+      
+        <div  class="d-flex flex-column align-items-center justify-content-center">
+          <img *ngIf="!showImage" [src]="getImage(data.image?data.image:tempImage)" class="rounded-circle" width="200px" height="200px" />
+          <img *ngIf="showImage" [src]="tempImage" class="rounded-circle" width="200px" height="200px" />
+       
+          <input
+          type="file"
+          class="file-input"
+          (change)="onImageChange($event)"
+          accept="image/*"
+        />
+        </div>
+      </div>
+
+
+      <mat-form-field appearance="outline" class="w-100 mb-3">
+        <mat-label>User Name:</mat-label>
+        <input type="text" matInput formControlName="name" />
+        <mat-error
+          *ngIf="editForm.get('name')?.hasError('required')"
+          >User Name is required</mat-error
+        >
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="w-100 mb-3">
+        <mat-label>Education</mat-label>
+        <input
+          type="text"
+          matInput
+          formControlName="education"
+        />
+        <mat-error
+          *ngIf="
+            editForm
+              .get('education')
+              ?.hasError('required')
+          "
+        >
+          Education is required</mat-error
+        >
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="w-100 mb-3">
+        <mat-label>Email</mat-label>
+        <input
+          type="text"
+          matInput
+          formControlName="email" readonly
+        />
+      
+      </mat-form-field>
+    
+      <div mat-dialog-actions class="d-flex justify-content-end">
+        <button mat-raised-button color="warn" (click)="closeDialog()">
+          Cancel
+        </button>
+        <button mat-raised-button color="primary" (click)="saveUser()">
+          Save
+        </button>
+      </div>
+  </form>
+  </div>
+</div>

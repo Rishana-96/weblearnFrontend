@@ -1,0 +1,105 @@
+
+<app-admin-nav></app-admin-nav>
+<div class="w-100" style="height: 88%;">
+
+<div class="row w-100 h-100">
+  <div class="col-md-2 col-10">
+    <app-admin-sidebar></app-admin-sidebar>
+  </div>
+  <div class="col-md-10 col-10 mt-3">
+    <h1 class="fs-2 fw-bold h1 text-center p-2">Course List</h1>
+    <div class="mat-elevation-z8 dark-table">
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <!-- Position Column -->
+        <ng-container matColumnDef="position">
+          <th mat-header-cell *matHeaderCellDef>No.</th>
+          <td mat-cell *matCellDef="let element; let i = index">{{ i + 1 }}</td>
+        </ng-container>
+           <!-- Name Column -->
+           <ng-container matColumnDef="courseImage">
+            <th mat-header-cell *matHeaderCellDef>Course Image</th>
+            <td mat-cell *matCellDef="let element">
+              <img [src]="getCourseImage(element.image)"class="rounded-circle" width="50px"height="50px">
+            </td>
+          </ng-container>
+  
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="courseName">
+          <th mat-header-cell *matHeaderCellDef>Course Name</th>
+          <td mat-cell *matCellDef="let element">{{ element.courseName}}</td>
+        </ng-container>
+
+        <!-- Education Column -->
+        <ng-container matColumnDef="tutorName">
+          <th mat-header-cell *matHeaderCellDef>Tutor Name</th>
+          <td mat-cell *matCellDef="let element">{{ element.tutorId.name }}</td>
+        </ng-container>
+
+
+         <!-- Education Column -->
+         <ng-container matColumnDef="courseFee">
+          <th mat-header-cell *matHeaderCellDef>Course Fee</th>
+          <td mat-cell *matCellDef="let element">{{ element.courseFee}}</td>
+        </ng-container>
+
+        <!-- Action Column -->
+        <ng-container matColumnDef="courseDetails">
+          <th mat-header-cell *matHeaderCellDef>CourseDetails</th>
+          <td mat-cell *matCellDef="let element">
+            <button
+              mat-raised-button
+              color="accent"
+              (click)="openCourseDetails(element)"
+              
+              
+            >
+            Course Details
+            </button>
+          </td>
+        </ng-container>
+
+          <!-- Status Column -->
+          <ng-container matColumnDef="status">
+            <th mat-header-cell *matHeaderCellDef>Status</th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.is_blocked ? "Blocked" : "Active" }}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef>Action</th>
+            <td mat-cell *matCellDef="let element">
+              <button
+                mat-raised-button
+                color="warn"
+                *ngIf="!element.is_blocked"
+                (click)="blockCourse(element._id)"
+              >
+                Block
+              </button>
+              <button
+                mat-raised-button
+                color="primary"
+                *ngIf="element.is_blocked"
+                (click)="unblockCourse(element._id)"
+              >
+                Unblock
+              </button>
+            </td>
+          </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+
+      <mat-paginator  
+        [pageSizeOptions]="[2, 4, 6]"
+        showFirstLastButtons
+        [length]="dataSource.data.length"
+        [pageSize]="2"
+      ></mat-paginator>
+    </div>
+  </div>
+</div>
+</div>

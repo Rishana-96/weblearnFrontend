@@ -1,0 +1,33 @@
+<app-tutor-nav></app-tutor-nav>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 mx-auto text-center mt-5">
+      <div class="card user-card">
+        <img 
+        [src]="getImage(image) "
+        class="card-img-top user-image"
+        
+      />
+        <div class="card-body">
+          <h5 class="card-title mb-3">
+             {{ name | uppercase }} 
+          </h5>
+          <div class="user-details">
+            <p class="user-info">
+              <span class="label">Qualification:</span>
+                {{ qualification }} 
+            </p>
+            <p class="user-info">
+               <span class="label">Email:</span> {{ email }} 
+            </p>
+          </div>
+          <button class="btn btn-dark mt-3 edit-button" (click)="editProfile()">
+            Edit Profile
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

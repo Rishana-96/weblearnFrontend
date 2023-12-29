@@ -1,0 +1,49 @@
+.course-head {
+  text-align: center;
+  margin-top: 20px;
+}
+.main {
+  background: rgb(222, 222, 222);
+  background: linear-gradient(
+    90deg,
+    rgba(222, 222, 222, 1) 0%,
+    rgba(96, 237, 0, 1) 100%,
+    rgba(0, 212, 255, 1) 100%
+  );
+}
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+mat-card {
+  max-width: 600px;
+  width: 100%;
+  padding: 20px;
+}
+
+.example-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.mat-form-field {
+  width: 100%;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.custom-button {
+  background-color: #2196f3;
+  color: white;
+}
+
+.custom-button:hover {
+  background-color: #1565c0;
+}

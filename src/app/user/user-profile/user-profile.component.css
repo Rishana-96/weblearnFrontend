@@ -1,0 +1,54 @@
+.user-card {
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: 0.3s;
+}
+
+.user-card:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.user-image {
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  margin: 0 auto;
+}
+
+.user-details p {
+  margin-bottom: 10px;
+  font-size: 18px;
+  color: #333;
+}
+
+.edit-button {
+  background-color: rgb(13, 105, 124);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 12px 24px;
+  font-size: 18px;
+  cursor: pointer;
+  margin-right: 10px; /* Adjust this value for the desired spacing */
+  transition: 0.3s;
+}
+
+.edit-button:hover {
+  background-color: rgb(234, 242, 243);
+  color: rgb(13, 105, 124);
+}
+.user-details .label {
+  width: 120px;
+  display: inline-block;
+  text-align: right;
+  margin-right: 10px;
+  font-weight: bold;
+  color: #555;
+}
+.card-title {
+  font-weight: bold;
+  font-size: 20px;
+}

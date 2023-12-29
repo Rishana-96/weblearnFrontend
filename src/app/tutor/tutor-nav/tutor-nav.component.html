@@ -1,0 +1,64 @@
+<mat-toolbar class="custom-toolbar">
+  <div class="logo text-white">
+    <span>WEBLEARN</span>
+  </div>
+  <div class="spacer"></div>
+  <!-- Buttons for large screens -->
+  <div class="centered-buttons" *ngIf="!isMobile">
+    <button mat-raised-button [routerLink]= "['/tutor/home']">Home</button>
+
+    <!-- Add more buttons as needed -->
+  </div>
+  <div *ngIf="!tutorLog && !isMobile" class="custom-button">
+    <!-- Your existing login and register buttons for larger screens -->
+    <button
+      mat-raised-button
+      [routerLink]="['/tutor']"
+      class="margin-right-button"
+    >
+      Login
+    </button>
+    <button mat-raised-button [routerLink]="['/tutor/tutor-register']">Register</button>
+  </div>
+  <div *ngIf="tutorLog && !isMobile" class="custom-button">
+    <!-- Your existing login and register buttons for larger screens -->
+    <button
+      mat-raised-button
+      class="margin-right-button"
+      (click)="logout()"
+    >
+      Logout
+    </button>
+    <button mat-raised-button [routerLink]="['/tutor/tutor-profile']">Profile</button>
+  </div>
+  <!-- Icon for mobile devices -->
+  <button mat-icon-button *ngIf="isMobile" [matMenuTriggerFor]="menu">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item routerLink="/" (click)="toggleMenu()">Home</button>
+    <button mat-menu-item routerLink="/courses" (click)="toggleMenu()">
+      Courses
+    </button>
+    <button mat-menu-item routerLink="/tutors" (click)="toggleMenu()">
+      Tutors
+    </button>
+    <button
+      mat-menu-item
+      routerLink="/tutors"
+      (click)="toggleMenu()"
+      [routerLink]="['/login']"
+    >
+      Login
+    </button>
+    <button
+      mat-menu-item
+      routerLink="/tutors"
+      (click)="toggleMenu()"
+      [routerLink]="['/register']"
+    >
+      Register
+    </button>
+    <!-- Add more menu items as needed -->
+  </mat-menu>
+</mat-toolbar>

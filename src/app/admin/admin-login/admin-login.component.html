@@ -1,0 +1,43 @@
+<div class="main">
+  <mat-card class="card">
+    <div class="left-panel">
+      <mat-card class="form-card">
+        <img
+          src="../../../assets/home/2.jfif"
+          alt="Admin Login Image"
+          class="login-image"
+        />
+        <h2>Admin Login</h2>
+      </mat-card>
+    </div>
+    <div class="right-panel">
+      <mat-card class="form-card">
+        <form
+          class="example-form"
+          [formGroup]="loginForm"
+          (ngSubmit)="proceedLogin()"
+        >
+          <mat-form-field appearance="fill">
+            <mat-label>Email</mat-label>
+            <input type="email" matInput formControlName="email" />
+            <mat-error *ngIf="loginForm?.get('email')?.hasError('required')"
+              >Email is required</mat-error
+            >
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Password</mat-label>
+            <input type="password" matInput formControlName="password" />
+            <mat-error *ngIf="loginForm?.get('password')?.hasError('required')"
+              >Password is required</mat-error
+            >
+          </mat-form-field>
+          <div class="button-container">
+            <button mat-raised-button class="custom-button" type="submit">
+              Login
+            </button>
+          </div>
+        </form>
+      </mat-card>
+    </div>
+  </mat-card>
+</div>

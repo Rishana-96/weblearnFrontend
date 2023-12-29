@@ -1,0 +1,158 @@
+<app-tutor-nav></app-tutor-nav>
+
+<div class="main">
+  <div
+    class="background-image d-flex justify-content-center align-items-center"
+  >
+    <h1 class="header-text text-white">Course Details</h1>
+  </div>
+</div>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-8" style="background-color: #f8f9fa">
+      <div class="p-5">
+        <h1 class="text-start fs-1" style="color: #2fbfa7">
+          {{ course.courseName }}
+        </h1>
+      </div>
+      <div class="p-5 rounded d-flex justify-content-around" style="background-color: #2fbfa7">
+        <div>
+          <span class="fs-3">Tutor Name: {{ course.tutorId.name }}</span>
+        </div>
+        <div>
+          <span class="fs-3">Email:{{ course.tutorId.email }}</span>
+        </div>
+      </div>
+
+      <div class="p-3 mt-1">
+        <div class="d-flex">
+       
+          <span class="fs-4 ms-2">Course Description</span>
+        </div>
+
+        <div class="fs-5 p-3 text-start" style="line-height: 30px">
+          {{ course.courseDescription }}
+        </div>
+      </div>
+   
+    </div>
+    <div class="col-md-4">
+      <div class="mt-5">
+        <p class="text-start fs-1 text-dark">Course Details</p>
+
+        <div>
+          <div
+            class="d-flex justify-content-between align-items-center p-3 mt-5"
+          >
+            <div class="d-flex">
+              <span class="material-icons" style="color: rgb(237, 95, 30)"
+                >snooze</span
+              >
+              <span class="fs-4 ms-2">Course Duration</span>
+            </div>
+
+            <div class="fs-4">{{ course.courseVideoDuration }}</div>
+          </div>
+          <hr />
+          <div
+            class="d-flex justify-content-between align-items-center p-3 mt-1"
+          >
+            <div class="d-flex">
+              <span class="material-icons" style="color: rgb(237, 95, 30)"
+                >download_for_offline</span
+              >
+              <span class="fs-4 ms-2" [routerLink]="['/tutor/my-buyers',course._id]">Buyers</span>
+            </div>
+
+            <div class="fs-4">{{ course.coursePurchasers.length }}</div>
+          </div>
+          <hr />
+          <div
+            class="d-flex justify-content-between align-items-center p-3 mt-1"
+          >
+            <div class="d-flex">
+              <span class="material-icons" style="color: rgb(237, 95, 30)"
+                >paid</span
+              >
+              <span class="fs-4 ms-2">Course Fee</span>
+            </div>
+
+            <div class="fs-4">{{ course.courseFee }}</div>
+          </div>
+          <hr />
+         
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-between mt-4">
+    <div class="col-md-6">
+      <h1 class="fs-4 ms-2">Course Trailor </h1>
+      <video class="w-100" controls [src]="courseVodeoUrl">
+    
+        Your browser does not support the video tag.
+      </video>
+    </div>
+
+    <div  class="col-md-6">
+      <h1 class="fs-4 ms-2">Course Video</h1>
+      <video class="w-100 " controls [src]="courseVideoUrl">
+    
+        Your browser does not support the video tag.
+      </video>
+    </div>
+    
+
+   
+  </div>
+
+  <!-- {{ courseVodeoUrl }} -->
+  <div class="p-3 mt-1">
+    <div class="d-flex">
+      <span class="fs-4 ms-2">Course Description</span>
+    </div>
+
+    <div class="fs-5 p-3 text-start" style="line-height: 30px">
+      {{ course.courseVideoDescription }}
+    </div>
+  </div>
+
+  <div *ngIf="course.review && course.review.length>0">
+    <div *ngFor="let review of course.review">
+      <section style="color: #000; background-color: #f3f2f2;">
+        <div class="container py-5">
+              <div class="card">
+                <div class="card-body py-4 mt-2">
+                  <div class="d-flex justify-content-center mb-4">
+                    <img [src]="getImage(review.userId.image?review.userId.image.toString():'')"
+                      class="rounded-circle shadow-1-strong" width="100" height="100" />
+                  </div>
+                  <h5 class="font-weight-bold text-center fs-3">{{review.userId.name}}</h5>
+                  <div class="p-5">
+                    <div class="row " *ngIf="review.rating">
+                      <div class="col-lg-2">
+                          <h3><b>Ratings :</b></h3>
+                      </div>
+                      <div class="col-lg-3 ms-1" style="margin-left: -129px; margin-top: -5px;" >
+                          <ng-container *ngFor="let star of getStarArray(review.rating)">
+                              <img width="37" height="34" src="https://img.icons8.com/fluency/48/star--v1.png" alt="star--v1" />
+                          </ng-container>
+                          <ng-container *ngFor="let star of getStarArray(5-review.rating)">
+                            <img width="25" height="28" src="https://static.thenounproject.com/png/1371880-200.png" alt="star--v1" />
+                        </ng-container>
+                      </div>
+                  </div>
+                    <p class="mb-2 fs-5" style="line-height: 25px;">
+                      <i class="fas fa-quote-left pe-2"></i>{{review.comments}}
+                    </p>
+                  </div>
+                 
+                </div>
+              </div>
+          
+        </div>
+      </section>  
+    </div>
+
+  </div>
+</div>

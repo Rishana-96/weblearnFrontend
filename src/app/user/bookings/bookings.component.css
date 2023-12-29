@@ -1,0 +1,44 @@
+.section {
+    margin-left: 50px;
+    margin-top: 30px;
+  }
+  .section-heading {
+    font-weight: bold;
+    text-align: center;
+  }
+  .card-container {
+    display: grid;
+    grid-template-columns: repeat(
+      auto-fill,
+      minmax(400px, 1fr)
+    ); /* 3 columns with minimum width of 250px */
+  }
+  
+  .card {
+    width: 400px;
+    margin: 20px;
+    height: 400px; /* Fixed height for the cards */
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #fff;
+    text-align: center;
+  }
+  .card-image {
+    width: 100%;
+    height: 350px;
+    border-radius: 8px; /* Optional: Add border-radius to match the card */
+    margin-bottom: 10px;
+  } /* Responsive styles for smaller screens */
+  @media (max-width: 768px) {
+    .card {
+      width: calc(50% - 40px);
+    }
+  }
+  
+  /* Responsive styles for even smaller screens */
+  @media (max-width: 480px) {
+    .card {
+      width: calc(100% - 40px);
+    }
+  }

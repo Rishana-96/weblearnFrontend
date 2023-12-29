@@ -1,0 +1,24 @@
+<app-user-nav></app-user-nav>
+<!--------------course section-->
+<div class="section">
+    <h1 class="section-heading">
+      <span>My Orders</span>
+    </h1>
+    <div class="card-container">
+      <mat-card class="card" *ngFor="let order of orders" [routerLink]="['/single-Video',order.courseId._id]">
+        <div
+          class="card-image"
+          [style.backgroundImage]="'url(' +getImage(order.courseId.image?order.courseId.image:'') + ')'"
+          [style.background-size]="'cover'"
+        ></div>
+
+        <div class="details" *ngIf="order">
+          <h2>{{order.courseId.courseName}}</h2>
+          <p>Tutor Name:{{order.tutorId.name}}</p>
+          <p>Course Fee: ${{order.courseId.courseFee}}</p>
+          <p></p>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+  <app-footer></app-footer>

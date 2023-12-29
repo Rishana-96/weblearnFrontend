@@ -1,0 +1,87 @@
+     <app-admin-nav></app-admin-nav>
+     <div class="w-100 h-100">
+          <div class="row w-100 h-100">
+              <div class="col-md-2 col-10">
+               <app-admin-sidebar></app-admin-sidebar>
+                </div>
+                <div class="col-md-10 row justify-content-around">
+               <h1 class="fs-2 fw-bold text-center pt-5">Dashboard</h1>
+               <div class="col-md-5 col-12 mb-5">
+                    <div class="transform">
+                         <p-chart class="w-50 h-50" type="pie" [data]="data" [options]="options"></p-chart>
+                        </div>
+               </div>
+               <div class="col-md-5 row justify-content-around mt-5" style="height: 400px;width: 700px;">
+                    <div class="col-md-6 rounded shadow border  text-light transform" style="background-color: #343a40;"
+>
+                         <div class="m-2 d-flex justify-content-around align-items-center h-50">
+                              <div class="transform">
+                                <mat-icon class="w-100 h-50" style="font-size: 80px;">library_books</mat-icon>
+                              </div>
+                              <div class="transform">
+                                <h1 class="w-100 h-50" style="font-size: 90px;">{{ dashboardData.courseData }}</h1>
+                              </div>
+                            </div> 
+                            <div class="h-25" class="transform">
+                              <h1 class="" style="font-size: 40px;text-align: center;"> Courses</h1>
+
+                         </div>
+                       </div>
+                       <div class="col-md-6 rounded shadow border  text-light transform" style="background-color: #343a40;"
+>
+                         <div class="m-2 d-flex justify-content-around align-items-center h-50">
+                              <div class="transform">
+                                <mat-icon class="w-100 h-50" style="font-size: 80px;">person_add</mat-icon>
+                              </div>
+                              <div class="transform">
+                                <h1 class="w-100 h-50" style="font-size: 90px;">{{ dashboardData.userData }}</h1>
+                              </div>
+                            </div> 
+                            <div class="h-25" class="transform">
+                              <h1 class="" style="font-size: 50px;text-align: center;">Users</h1>
+
+                         </div>
+                       </div>
+
+                       <div class="col-md-6 rounded shadow border  text-light transform" style="background-color: #343a40;"
+>
+                         <div class="m-2 d-flex justify-content-around align-items-center h-50">
+                              <div class="transform">
+                                <mat-icon class="w-100 h-50" style="font-size: 80px;">groups</mat-icon>
+                              </div>
+                              <div class="transform">
+                                <h1 class="w-100 h-50" style="font-size: 90px;">{{ dashboardData.tutorData }}</h1>
+                              </div>
+                            </div> 
+                            <div class="h-25" class="transform">
+                              <h1 class="" style="font-size: 50px;text-align: center;">Tutors</h1>
+
+                         </div>
+                       </div>
+                       <div class="col-md-6 rounded shadow border  text-light transform" style="background-color: #343a40;"
+>
+                         <div class="m-2 d-flex justify-content-around align-items-center h-50">
+                              <div class="transform">
+                                <mat-icon class="w-100 h-50" style="font-size: 80px;">shopping_cart</mat-icon>
+                              </div>
+                              <div class="transform">
+                                <h1 class="w-100 h-50" style="font-size: 90px;">{{ dashboardData.buyers }}</h1>
+                              </div>
+                            </div> 
+                            <div class="h-25" class="transform">
+                              <h1 class="" style="font-size: 50px;text-align: center;"> Buyers</h1>
+
+                         </div>
+                       </div>
+               </div>
+               
+                         
+
+           </div>
+
+          
+   
+   
+     </div>
+</div>
+

@@ -1,0 +1,30 @@
+<app-user-nav></app-user-nav>
+<!--------------Tutor section-->
+<div class="section">
+    <h1 class="section-heading">
+      <span>Our Instructors</span>
+    </h1>
+    <div class="card-container">
+      <mat-card class="card" *ngFor="let tutor of tutors">
+        <div
+          class="card-image" *ngIf="!showImage"
+          [style.backgroundImage]="'url(' + getImage(tutor.image)+ ')'"
+          [style.background-size]="'cover'"
+        >
+    </div>
+    <div
+    class="card-image" *ngIf="showImage"
+    [style.backgroundImage]="'url(' + tempImage+ ')'"
+    [style.background-size]="'cover'"
+  >
+</div>
+        <div class="details">
+          <h2>{{ tutor.name }}</h2>
+          <p>Qualification: {{tutor.qualification }}</p>
+          
+          
+        </div>
+      </mat-card>
+    </div>
+  </div>
+  <app-footer></app-footer>

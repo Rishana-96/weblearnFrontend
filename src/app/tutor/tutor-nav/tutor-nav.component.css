@@ -1,0 +1,41 @@
+.custom-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 16px;
+  background-color: rgb(13, 105, 124);
+}
+
+.centered-buttons {
+  display: flex;
+  gap: 16px;
+}
+
+.margin-right-button {
+  margin-right: 16px;
+}
+/* Responsive styles for smaller screens */
+@media (max-width: 768px) {
+  .custom-toolbar {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .centered-buttons {
+    margin-top: 16px;
+  }
+
+  .custom-button {
+    margin-top: 16px;
+  }
+
+  .margin-right-button {
+    margin-right: 0;
+    margin-bottom: 8px;
+  }
+
+  .spacer {
+    flex: 1;
+    order: -1;
+  }
+}

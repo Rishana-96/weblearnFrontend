@@ -1,0 +1,79 @@
+<app-user-nav></app-user-nav>
+<!------------main-wrapper start https://elearn.websitelayout.net/-->
+<div class="carousel-container" [@slide]="currentIndex">
+  <div
+    class="carousel-slide"
+    *ngFor="let image of images; let i = index"
+    [hidden]="i !== currentIndex"
+  >
+    <img [src]="'assets/home/' + image" alt="Slide {{ i }}" />
+    <div class="carousel-text">
+      <h2>{{ carouselItems[i].title }}</h2>
+      <p>{{ carouselItems[i].description }}</p>
+    </div>
+  </div>
+</div>
+
+<!--------------course section-->
+<div class="section">
+  <h1 class="section-heading">
+    <span>Our Courses</span>
+  </h1>
+  <div class="card-container">
+    <mat-card class="card" *ngFor="let course of courses.slice(0,6)" [routerLink]="['single-page',course._id]">
+      <div
+        class="card-image"
+        [style.backgroundImage]="'url(' + getCourseImage(course.image ? course.image:'')+ ')'"
+        [style.background-size]="'cover'"
+      ></div>
+      <div class="details">
+        <h2>{{ course.courseName }}</h2>
+        <p>Tutor Name: {{ course.tutorId.name }}</p>
+        <p>Course Fee: ${{ course.courseFee }}</p>
+        <p>{{ courseFee }}</p>
+      </div>
+    </mat-card>
+  </div>
+</div>
+<!--------------------------------------Category section--------------->
+<!-- <div class="category-section">
+  <h1 class="category-heading">
+    <span> Popular Categories</span>
+  </h1>
+  <div class="categories-grid">
+    <mat-card class="cat-card" *ngFor="let category of categories">
+      <div class="card-icon" *ngIf="category.icon">
+        <mat-icon>{{ category.icon }}</mat-icon>
+        <h2>{{ category.name }}</h2>
+      </div>
+    </mat-card>
+  </div>
+</div> -->
+<!--------------Tutor section-->
+<div class="section">
+  <h1 class="section-heading">
+    <span>Experience Instructors</span>
+  </h1>
+  <div class="card-container">
+    <mat-card class="card" *ngFor="let tutor of tutors">
+      <div
+        class="card-image" *ngIf="!showImage"
+        [style.backgroundImage]="'url(' + getTutorImage(tutor.image) + ')'"
+        [style.background-size]="'cover'"
+      ></div>
+      <div
+      class="card-image" *ngIf="showImage"
+      [style.backgroundImage]="'url(' + tempImage + ')'"
+      [style.background-size]="'cover'"
+    ></div>
+      <h2>{{ tutor.name }}</h2>
+      <p>{{ tutor.qualification }}</p>
+    </mat-card>
+  </div>
+  <div class="tutor-button">
+    <button mat-raised-button color="success" value="" routerLink="/tutor">
+      Become Instructor
+    </button>
+  </div>
+</div>
+<app-footer></app-footer>

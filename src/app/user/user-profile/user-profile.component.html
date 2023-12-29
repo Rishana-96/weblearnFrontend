@@ -1,0 +1,42 @@
+<app-user-nav></app-user-nav>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 mx-auto text-center mt-5">
+      <div class="card user-card">
+        <img *ngIf="!showImage" 
+        [src]="getImage(image?image:tempImage) "
+        class="card-img-top user-image"
+        
+      />
+      <img *ngIf="showImage" 
+      src=" https://img.myloview.com/stickers/employee-icon-vector-male-user-person-profile-avatar-symbol-for-business-in-a-flat-color-glyph-pictogram-sign-illustration-700-286087138.jpg"
+      class="card-img-top user-image"
+      
+    />
+
+        <div class="card-body">
+          <h5 class="card-title mb-3">
+            {{ name | uppercase }}
+          </h5>
+          <div class="user-details">
+            <p class="user-info">
+              <span class="label">Education:</span>
+              {{ education }}
+            </p>
+            <p class="user-info">
+              <span class="label">Email:</span> {{ email }}
+            </p>
+          </div>
+          <button class="btn btn-dark mt-3 edit-button" (click)="editProfile()">
+            Edit Profile
+          </button>
+          <button class="btn btn-dark mt-3 ml-2 edit-button" (click)="myOrders()">
+            My Courses
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

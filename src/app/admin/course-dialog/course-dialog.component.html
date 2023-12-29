@@ -1,0 +1,57 @@
+<div class="mt-5">
+  <mat-card class="example-card">
+  <mat-card-header>
+    <div class="row justify-content-center mt-4 video-container">
+   
+      <h1 class="fs-2 text-center">Course Trailer</h1>
+      <div class="d-flex justify-content-center mt-3">
+       <video class="w-75 height: 100px;" controls [src]="trailorVideoUrl">
+           
+            Your browser does not support the video tag.
+          </video>
+      </div>
+      <h1 class="fs-2 text-center mt-5">Course Video</h1>
+      <div class="d-flex justify-content-center mt-3">
+       <video class="w-75 height: 100px;" controls [src]="courseVideoUrl">
+           
+            Your browser does not support the video tag.
+          </video>
+      </div>
+   
+  </div>
+  
+  </mat-card-header>
+
+  <mat-card-content>
+    <div class="p-3 mt-1">
+      <div class="d-flex">
+        <h1 class="fs-2 text-center">Course Video Description</h1>
+      </div>
+      <div class="fs-5 text-start description" style="line-height: 40px;">
+        {{course.courseDescription}}
+      </div>
+    </div>
+    <div class="p-3 mt-1">
+      <div class="d-flex">
+        <h1 class="fs-2 text-center">Course Description</h1>
+      </div>
+      <div class="fs-5 text-start description" style="line-height: 40px;">
+        {{course.courseVideoDescription}}
+      </div>
+    </div>
+    <div class="p-3 mt-1">
+      <div class="d-flex">
+        <h1 class="fs-2 text-center">Course Duration</h1>
+      </div>
+      <div class="fs-5 text-start description" style="line-height: 40px;">
+        {{course.courseVideoDuration}}
+      </div>
+    </div>
+  </mat-card-content>
+  <div mat-dialog-actions class="d-flex justify-content-end">
+    <button mat-raised-button color="warn" (click)="closeDialog()">
+      Close
+    </button>
+  </div>
+</mat-card>
+</div>

@@ -1,0 +1,25 @@
+<div *ngIf="!rejectApproval" class="bg-success h-100 w-100">
+  <!-- <div mat-dialog-content> -->
+  <iframe [src]="cv" class="w-100 h-100"> </iframe>
+  <!-- </div> -->
+  <!-- </div> -->
+  <div mat-dialog-actions class="d-flex justify-content-end">
+    <button mat-raised-button mat-dialog-close color="warn">Close</button>
+  </div>
+</div>
+<div *ngIf="rejectApproval">
+  <div mat-dialog-content class="h-50 w-50">
+    <mat-form-field appearance="fill" class="w-100">
+      <textarea
+        matInput
+        [(ngModel)]="reason"
+        placeholder="Reason for rejection"
+        required
+      ></textarea>
+    </mat-form-field>
+
+    <div mat-dialog-actions class="d-flex justify-content-end">
+      <button color="bg-success" (click)="closeDialog()">Submit</button>
+    </div>
+  </div>
+</div>
